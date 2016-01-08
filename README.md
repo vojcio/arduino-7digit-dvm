@@ -1,28 +1,29 @@
-# arduino-7digit-dvm
+# arduino 7digit dvm
 
 Arduino 7 digit voltmeter (DVM) with liquid crystal screen.
+24bit ADC IC: LTC2400
+4.096 precision reference: TI REF3040
 
 ## Installation
 
-TODO
+- clone git repo
+- open in Arduino SDK
+- adjust your pin configuration
+- write to arduino
 
 ## Usage
 
-TODO
+You need two buttons to interact with menu. First button is used to navigate up and down, second button changes the acutal value.
 
 ## Contributing
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+Please fell free to contribute to this simple arduino project!
 
 ## Credits
 
-All changes made by Wojciech Krysmann.
+Changes to original code made by Wojciech Krysmann.
 
-original code written by:
+Original code written by:
 coldtears electronics
 LTC2400 code is adapted from Martin Nawrath
 Kunsthochschule fuer Medien Koeln
