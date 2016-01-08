@@ -66,14 +66,16 @@ byte sig;                 // sign bit flag
 char real[10];            // pomocnicza do konwersji
 
 void setup() {
-  lcd.begin(20, 4); //configure
+  lcd.begin(20, 4); //configure screen
 
+  //boot screen
   lcd.print("Voltmeter");
   lcd.setCursor(15, 3);
   lcd.print("v1.0");
   delay(800);
   lcd.clear();
   
+  //write static stuff to lcd
   lcd.setCursor(1, 0);
   lcd.print("Real:");
   
@@ -92,6 +94,7 @@ void setup() {
   lcd.setCursor(7, 3);
   lcd.print("):");
   
+  // ltc2400 init
   cbi(PORTB, LTC_SCK);     // LTC2400 SCK low
   sbi (DDRB, LTC_CS);      // LTC2400 CS HIGH
 
@@ -115,7 +118,7 @@ void loop() {
   // read the state of the pushbutton value:
   button1State = digitalRead(button1Pin);
   button2State = digitalRead(button2Pin);
- 
+  // menu navigation
   if (button1State == HIGH) {
       menuCur++;
       if(menuCur >= 4) menuCur = 0;
@@ -134,7 +137,7 @@ void loop() {
       }
       delay(timer);
   }
-  
+  // values adjust
   if (button2State == HIGH) {
     switch (menuCur) {
        case 0:
@@ -173,6 +176,7 @@ void loop() {
         break;
     }
   }
+  
   cbi(PORTB, LTC_CS);            // LTC2400 CS Low
   delayMicroseconds(1);
   if (!(PINB & (1 << 4))) {    // ADC Converter ready ?
